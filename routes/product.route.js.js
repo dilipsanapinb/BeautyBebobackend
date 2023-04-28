@@ -11,7 +11,8 @@ productRouter.get("/getproduct", async (req, res) => {
         res.send(product)
         console.log("Allproduct")
     } catch (error) {
-        res.send("err:not able to get the data of all product");
+        // res.send("err:not able to get the data of all product");
+        res.status(400).send({ 'Message': error });
         console.log(error);
     }
 })
@@ -25,7 +26,8 @@ productRouter.post("/add",async(req,res)=>{
         res.send("new product added to Database")
         console.log(newproduct)
     } catch (error) {
-        res.send("err:not able to post the data of Product");
+        res.status(400).send({ 'Message': error });
+        // res.send("err:not able to post the data of Product");
         console.log(error);
     }
 })
@@ -44,12 +46,13 @@ productRouter.patch("/update/:id",async(req,res)=>{
             res.send({"msg":"You are not authorised"})
         }else{
         let data=await ProductModel.findByIdAndUpdate({_id:id},payload);
-        res.send("Note updated successfully");
+        res.send("product updated successfully");
         console.log(data)
-        console.log(`Note updated successfully with id:${id}`);
+        console.log(`Product updated successfully with id:${id}`);
         }
     } catch (error) {
-        res.send("err:Not able to update product.patch");
+        res.status(400).send({ 'Message': error });
+        // res.send("err:Not able to update product.patch");
         console.log(error);
     }
 })
@@ -72,7 +75,8 @@ productRouter.delete("/delete/:id",async(req,res)=>{
         console.log(`product deleted successfully with id:${id}`);
         }
     } catch (error) {
-        res.send("err:Not able to update product.patch");
+        res.status(400).send({ 'Message': error });
+        // res.send("err:Not able to update product.patch");
         console.log(error);
     }
 })
