@@ -2,12 +2,11 @@ const mongoose=require("mongoose");
 
 const cartSchema=mongoose.Schema({
 name:String,
-price:String,
-strike_price:String,
+price:Number,
 discount:String,
-image_url:String,
+image_url: String,
+type:String,
 userID:String
-
 })
 
 const CartModel=mongoose.model("cart",cartSchema);
