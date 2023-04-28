@@ -4,11 +4,13 @@ const {connection}=require("./config/db")
 const {productRouter}=require("./routes/product.route.js");
 const { userRouter}=require("./routes/user.route");
 const { cartRouter}=require("./routes/cart.route");
-const {authenticate}=require("./middlewares/authenticate.middleware");
+const { authenticate } = require("./middlewares/authenticate.middleware");
+const bodyParser = require("body-parser");
 const cors = require('cors')
 const app=express();
 
 //middlewares
+app.use(bodyParser.json())
 app.use(express.json())
 app.use(cors())
 //routes
