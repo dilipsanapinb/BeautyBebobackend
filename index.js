@@ -10,9 +10,7 @@ const app=express();
 
 //middlewares
 app.use(express.json())
-app.use(cors({
-    origin:"*"
-}))
+app.use(cors())
 //routes
 app.get("/",(req,res)=>{
     res.send("Welcome to Home Page")
