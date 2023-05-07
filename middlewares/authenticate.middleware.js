@@ -11,7 +11,7 @@ const authenticate = (req, res, next) => {
                     req.body.userID = userID;
                     next()
                 } else {
-                    res.status(400).send({ 'Error': err.message })
+                    res.send({ 'Error': err.message })
                 }
             });
         
@@ -19,11 +19,8 @@ const authenticate = (req, res, next) => {
             console.log('No Token');
         }
     } catch (error) {
-        res.status(400).send(
-            {
-                'Error': error.messsage
-            }
-        )
+        console.log({ 'Error': error.message });
+        res.send({ 'Error': error.message })
     }
 };
 
